@@ -1,0 +1,42 @@
+<div *ngIf="!dataLoaded" class="data-loader-dialog"><mat-spinner mode="indeterminate"></mat-spinner></div>
+
+<div class="popup-form">
+  <header class="popup-form-header orient-contents-horizontally-dialog">
+    <div class="popup-form-title">Donate an Item</div>
+
+    <span class="horizontal-spacer"></span>
+
+    <button color="warn" (click)="OnExit()" mat-button>
+      <mat-icon color="warn">close</mat-icon>
+    </button>
+  </header>
+
+  <div class="popup-form-tab-content">
+    <form *ngIf="dataLoaded" class="orient-contents-vertically-dialog" [formGroup]="itemClaimForm" (ngSubmit)="OnSubmitDonation()">
+			<mat-label>Upload a picture of the item:</mat-label>
+      <label for="imageInput" class="profile-edit-image-container center-contents-dialog">
+        <img [src]="image ? image : 'https://kula-images.s3.amazonaws.com/default.jpeg'" class="profile-image primary-border">
+        <div class="profile-edit-photo-hover-text">Choose file</div>
+        <div class="profile-edit-photo-background"></div>
+      </label>
+      <br/>
+      <input id="imageInput" accept="image/*" type='file' (change)="OnSelectImage($event)">
+      <div class="orient-contents-horizontally-dialog divider">
+        <span class="horizontal-spacer"></span>
+        <span class="horizontal-spacer"></span>
+        <button *ngIf="image" color="accent" (click)="Delete()"  mat-raised-button>Delete</button>
+      </div>
+      <mat-label class="divider">Provide a short description of the item for the requester to see.</mat-label>
+      <mat-form-field appearance="outline" >
+        <mat-label>Short Description</mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" placeholder="Description" maxlength="200" type="text" formControlName="description"></textarea>
+        <mat-hint align="end">{{itemClaimForm.controls['description'].value?.length || 0}}/200</mat-hint>
+        <button mat-button *ngIf="itemClaimForm.controls['description'].dirty" matSuffix mat-icon-button aria-label="Clear" (click)="itemClaimForm.controls['description'].reset()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button class="white-color" color="primary" type="submit" [disabled]="!itemClaimForm.valid">Donate Item</button>
+    </form>
+  </div>
+</div>

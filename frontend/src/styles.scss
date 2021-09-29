@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./Styles/pop-up-form.scss";
+@import "./Styles/base.scss";
+@import "./Styles/general-tools.scss";
+@import "./Styles/stepper.scss";
+@import "./Styles/side-nav.scss";
+@import "./Styles/profile.scss";
+@import "./Styles/dashboard.scss";
+@import "./Styles/messages.scss";
+html, body { height: 100%; }
+body { margin: 0; font-family: "Lato", sans-serif; }

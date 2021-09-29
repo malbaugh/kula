@@ -1,0 +1,159 @@
+.landing-html {
+  height: 100% !important;
+  margin:0;
+  font-size:16px;
+  font-family:"Lato", sans-serif !important;
+  font-weight:400;
+  line-height:1.8em;
+  overflow-y: auto !important;
+}
+.landing-body {
+  overflow-y: auto !important;
+  height: calc(100% - 64px) !important;
+  margin:0;
+  font-size:16px;
+  font-family:"Lato", sans-serif;
+  font-weight:400;
+  line-height:1.8em;
+}
+.share-text {
+  font-size: xx-large;
+  line-height: 1.6;
+}
+.share-subtext {
+  font-size: x-large;
+  line-height: 1.6;
+}
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+.fa {
+  padding: 12px !important;
+  font-size: 30px;
+  border-radius: 8px;
+}
+.fa-facebook {
+  background: #3B5998 !important;
+  color: white !important;
+}
+.fa:hover {
+  opacity: 0.7;
+}
+.small-divider {
+  padding-bottom: 12px;
+}
+.pimg1 {
+  position:relative;
+  /* opacity:0.80; */
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-color:#27272f;
+}
+.pimg1 {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),
+    url('https://kula-images.s3.amazonaws.com/forest.jpg');
+  min-height: 20%;
+}
+.team-link-lists {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  flex-wrap: wrap;
+  display: -webkit-flex !important;
+  display: -webkit-flex !important;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content:center !important;
+  
+  flex-shrink: 0 !important;
+}
+.list-item {
+  margin: 12px;
+  max-width: 250px;
+  min-width: 200px;
+  list-style-type: none;
+}
+.ptext-opening { 
+  position:absolute;
+  
+  top:30%;
+  width:100%;
+  text-align:center;
+  color:#f4f4f4;
+  font-size:48px;
+  letter-spacing:16px;
+  font-weight: bold;
+  text-transform:uppercase;
+}
+.contact-icon {
+  font-size: 56px !important;
+  margin: 6px !important;
+	padding-bottom:12px;
+}
+@media all and (max-width: 1100px) {
+  .ptext-opening {
+      letter-spacing:8px;
+  }
+
+}
+@media all and (max-width: 802px) {
+  .ptext-opening {
+      letter-spacing:8px;
+      font-size: 34px;
+      font-weight: normal;
+  }
+  .pimg1 {
+      background-attachment:scroll;
+  }
+}
+.landing-html {
+  height: 100% !important;
+  margin:0;
+  font-size:16px;
+  font-family:"Lato", sans-serif !important;
+  font-weight:400;
+  line-height:1.8em;
+  overflow-y: auto !important;
+}
+.landing-body {
+  overflow-y: auto !important;
+  height: calc(100% - 64px) !important;
+  margin:0;
+  font-size:16px;
+  font-family:"Lato", sans-serif;
+  font-weight:400;
+  line-height:1.8em;
+}
+
+.divider {
+  padding-bottom: 24px;
+}
+.medium-divider {
+  padding-bottom: 36px !important;
+}
+.all-caps {
+  text-transform:uppercase;
+}
+
+
+.border {
+  line-height: 1.6;
+  margin: 0px !important;
+  padding-left: 0px !important;
+  display:inline-block;
+}
+
+.ptext-opening .border.trans {
+  background-color:transparent;
+}
+
+
+@media all and (max-width: 600px) {
+  .landing-body {
+    height: calc(100% - 56px) !important;
+	}
+}

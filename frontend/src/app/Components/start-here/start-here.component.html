@@ -1,0 +1,46 @@
+<div *ngIf="!dataLoaded" class="data-loader">
+  <mat-spinner></mat-spinner>
+</div>
+
+<html *ngIf="dataLoaded" class="landing-html" lang="en">
+  <body class="landing-body">
+    <div class="pimg1">
+      <div class="ptext-opening">
+        <span class="border medium-divider">
+          Welcome!
+        </span>
+      </div>
+    </div>
+
+		<section class="section section-dark">
+      <h1 class="share-text small-divider"><b>Please consider sharing our website with your facebook friends!</b></h1>
+			<div class="orient-contents-horizontally center-contents divider">
+				<div class="fb-share-button" data-href="https://kula.com/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkula.com%2F&amp;src=sdkpreparse" class="fa fa-facebook fb-xfbml-parse-ignore">Share</a></div>
+      </div>
+			<p class="share-subtext">The more people we get involved on our site, the more you and your neighbors will be able to find the things they need.</p>
+    </section>
+
+    <section class="section section-light">
+			<h1 class="section-text all-caps">Getting started</h1>
+			<p class="sub-section-text medium-divider">Click on one of the options below to get started.</p>
+			<div *ngIf="!currentUserService.CurrentUserValue.Organization" class="team-link-lists orient-contents-horizontally medium-divider">
+				<li class="list-item" *ngFor="let action of actions">
+					<a [routerLink]="" class="team-card orient-contents-vertically" (click)="OnSelectAction(action)">
+						<mat-icon [inline]="true" class="contact-icon" color="primary">{{action.Icon}}</mat-icon>
+						<h3 class="section-text all-caps">{{action.Title}}</h3>
+						<p class="sub-section-text">{{action.Description}}</p>
+					</a>
+				</li>
+			</div>
+			<div *ngIf="currentUserService.CurrentUserValue.Organization" class="team-link-lists orient-contents-horizontally medium-divider">
+				<li class="list-item" *ngFor="let action of orgActions">
+					<a [routerLink]="" class="team-card orient-contents-vertically" (click)="OnSelectAction(action)">
+						<mat-icon [inline]="true" class="contact-icon" color="primary">{{action.Icon}}</mat-icon>
+						<h3 class="section-text all-caps">{{action.Title}}</h3>
+						<p class="sub-section-text">{{action.Description}}</p>
+					</a>
+				</li>
+			</div>
+    </section>
+  </body>
+</html>

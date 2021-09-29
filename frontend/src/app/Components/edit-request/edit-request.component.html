@@ -1,0 +1,37 @@
+<div *ngIf="!dataLoaded" class="data-loader-dialog"><mat-spinner mode="indeterminate"></mat-spinner></div>
+
+<div class="popup-form">
+  <header class="popup-form-header orient-contents-horizontally-dialog">
+    <div class="popup-form-title">Edit Request</div>
+    <span class="horizontal-spacer"></span>
+    <button color="warn" (click)="OnExit()" mat-button>
+      <mat-icon color="warn">close</mat-icon>
+    </button>
+  </header>
+  
+  <div class="popup-form-content">
+    <form class="orient-contents-vertically-dialog" [formGroup]="itemRequestForm" (ngSubmit)="OnSubmitItem()">
+      <mat-label class="divider" *ngIf="currentUserService.CurrentUserValue.Organization">Note: include your organization's name in the description if you would like your organization to be recognizable in the item's listing.</mat-label>
+      <mat-form-field appearance="outline">
+        <mat-label>What do you need?</mat-label>
+        <input matInput placeholder="Name" formControlName="name" />
+      </mat-form-field>
+
+      <mat-label class="divider">Provide a short description about what you need. Please be specific so your neighbors know exactly what you are looking for.</mat-label>
+      <mat-form-field appearance="outline" >
+        <mat-label>Short Description</mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" placeholder="Description" maxlength="200" type="text" formControlName="description"></textarea>
+        <mat-hint align="end">{{itemRequestForm.controls['description'].value?.length || 0}}/200</mat-hint>
+        <button mat-button *ngIf="itemRequestForm.controls['description'].dirty" matSuffix mat-icon-button aria-label="Clear" (click)="itemRequestForm.controls['description'].reset()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      
+      <div class="orient-contents-horizontally-dialog">
+        <span class="horizontal-spacer"></span>
+        <span class="horizontal-spacer"></span>
+        <button mat-raised-button class="white-color" color="primary" type="submit" [disabled]="!itemRequestForm.valid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

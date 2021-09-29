@@ -1,0 +1,374 @@
+<div *ngIf="!dataLoaded" class="data-loader">
+  <mat-spinner></mat-spinner>
+</div>
+
+<html *ngIf="dataLoaded" class="stepper-form-main">
+  <mat-vertical-stepper class="stepper-bar" [linear]="isLinear" #stepper appMatStepperScroller>
+
+    <mat-step>
+      <ng-template matStepLabel>Terms of service</ng-template>
+      <div class="orient-contents-vertically-dialog stepper-form-content">
+        <div>
+          <h2><strong>Kula Terms of Service</strong></h2>
+          <p><strong>HIGHLIGHTS</strong></p>
+          <ul>
+            <li>Kula users can create profiles, post items, and pick up posted items.</li><br>
+            <li>Content you post on the site should be accurate, your own items, and respectful and decent towards others.</li><br>
+            <li>When you participate on our site, you must comply with Kula's terms as well as any rules listed on the item by the owner.</li><br>
+            <li>Item posters must be fair, post any rules or guidelines, and make the item available as they listed it.</li>
+            <li>Don't do anything illegal, be honest, participate at your own risk.</li>
+          </ul>
+          <p></p>
+          
+          <h2><strong> 1. ACCEPTANCE OF AGREEMENT</strong></h2>
+          <p>By using and/or visiting our Site, you agree to the terms and conditions outlined in this Agreement and accompanying Privacy Policy (collectively the “Agreement”). If you do not agree to the Agreement, you should not use the Site.</p>
+          <p>We may revise this Agreement at any time by posting an update to the Site. Your continued use of our Site after a posted change of this Agreement means that you agree to be bound by the changes, so please check the Agreement regularly for any changes.</p>
+          <p>You affirm that you are at least the age of majority where you reside, or an emancipated minor, or possess legal parental or guardian consent, and are fully able and competent to enter into the terms, conditions, obligations, affirmations, representations, and warranties set forth in this Agreement. You also affirm that you are able to abide by and comply with this Agreement.</p>
+          <p>Our Site is not intended for children under eighteen. You affirm that you are at least eighteen years of age. If you are under eighteen years of age, then please do not use the Site.</p>
+          <p><strong>THE SECTIONS BELOW TITLED “BINDING ARBITRATION” AND “CLASS ACTION WAIVER” CONTAIN A BINDING ARBITRATION AGREEMENT AND CLASS ACTION WAIVER. THEY AFFECT YOUR LEGAL RIGHTS. PLEASE READ THEM.</strong></p>
+      
+          <h2><strong> 2. SUMMARY OF SERVICE AND DEFINITIONS</strong></h2>
+          <p>Kula is a platform that enables certain users ("Users") to list items they would like to give away (meaning, free of charge), and describe those items, and collect items from other users on the Site.</p>
+          <p>Below are some definitions of terms used throughout these Agreement.</p>
+          <p>“Content” means various content including, but not limited to, videos, photographs, images, artwork, graphics, audio clips, comments, data, text, software, scripts, source code, other material and information, and associated trademarks and copyrightable works, that the Service makes accessible through the Site, email, and other media.</p>
+          <p>“Users” means Posters, Users, and other visitors to the Site and users of the Service who have the ability to contribute, add, create, upload, submit, distribute, facilitate the distribution of, collect, post, or otherwise make accessible Content.</p>
+          <p>“User Content” means any Content submitted by Users.</p>
+          <p>“Item” means the items entered on the Site that is entered as an available item being given away by a User.</p>
+          <p>“Pickup Period” means the period during which Users may pickup an item.</p>
+          
+          <h2><strong> 3. USERNAME AND PASSWORD </strong></h2>
+          <p>To access certain restricted sections of our Site you will be required to sign up for a Kula account. You agree that the confidentiality of your username and password are your responsibility. You agree to accept responsibility for all activities that occur under your username and password and to notify us immediately if you believe there has been any unauthorized use of your account or other breach of security.</p>
+          <p>We reserve the right to suspend or terminate any User account, and to reclaim or re-assign usernames without any liability to you. Usernames may be displayed publicly on the Site. You agree not to create a username that is obscene or offensive to others, or impersonates any person or entity, or falsely states or otherwise misrepresents your affiliation with a person or entity. We reserve the right to reclaim usernames associated with accounts that are inactive for more than six months. We may also reclaim usernames on behalf of organizations or individuals, if they hold legal claim or trademark on those usernames.</p>
+      
+          <h2><strong> 4. CODE OF CONDUCT AND RESPONSIBILITY FOR USER CONTENT</strong></h2>
+          <p>All Users agree to post or make available content (including any Items) and otherwise use the Site in a manner that:</p>
+          <ul>
+            <li>Complies with all applicable laws and regulations including federal, state, or local laws;</li>
+            <li>Provides accurate information about you and any organization with which you have a current or past affiliation;</li>
+          </ul>
+          <p>All Users agree NOT to post or make available Items or otherwise use the Site in a manner that:</p>
+          <ul>
+            <li>Misrepresents your identity;</li>
+            <li>Misrepresents any entity or organization;</li>
+            <li>Impersonates any person or entity, including, but not limited to a Kula employee, or falsely states or otherwise misrepresents your affiliation with any person or entity;</li>
+            <li>Uses or attempts to use another User’s account;</li>
+            <li>Deceives the user of the nature of the item available (e.g. requiring payment for an item posted for free);</li>
+            <li>Discloses information about another person or entity, including your employer, that is confidential, or that you are not authorized to disclose;</li>
+            <li>Is harmful, threatening, abusive, harassing, defamatory, derogatory, libelous, invasive of another’s privacy, harmful to minors in any way, or hateful toward an individual or group of individuals based on religion, gender, sexual orientation, race, ethnicity, age, or disability;</li>
+            <li>Depicts hatred, is in bad taste, incites violence or is likely to incite violence, contains excessive vulgar or obscene language or excessive violence, contains pornography, obscenity or sexual activity;</li>
+            <li>Violates any law or regulation, including federal, state, or local laws;</li>
+            <li>Infringes any patent, trademark, trade secret, copyright or other proprietary rights of any party, or violates any contractual or fiduciary obligation;</li>
+            <li>Constitutes or contains “affiliate marketing;” “link referral code;” “junk mail;” “spam;” “chain letters;” “pyramid schemes;” "multi-level marketing;” unsolicited commercial advertising; or any other form of excessive, repetitive, and/or unsolicited messages to other users;</li>
+            <li>Contains malware such as software viruses, worms, or any other computer code, files or programs designed to interrupt, destroy or limit the functionality of any computer software or hardware or telecommunications equipment;</li>
+            <li>Discloses personal information about another person such as their email address, telephone number, address (street or box number), or social security number;</li>
+            <li>Disrupts the normal flow of dialogue with an excessive amount of content to the Site, or otherwise negatively affects other users’ ability to use the Site;</li>
+            <li>Constitutes excessive use of site features, inconsistent with the intent and purpose of the Site, and/or placing an undue burden on the Services, including but not limited to excessive claiming of Items, excessive requesting of Items, and/or excessive registrations for Users or other events on the Site;</li>
+            <li>Uses manual or automated software, devices, scripts robots, or other means or processes to access, “scrape,” “crawl” or “spider” the Site, User Content (including User Profiles and Team Pages), or any related data or information;</li>
+            <li>Employs misleading email addresses, or forged headers or otherwise manipulated identifiers in order to disguise the origin of content transmitted through the Site;</li>
+            <li>Disparages another person, Poster, or Kula; or</li>
+            <li>Contains any other content or constitutes any other action, which in the sole judgment of Kula or a Poster, is inappropriate or inconsistent with the purpose of the Site.</li>
+          </ul>
+          <p>Without limiting the foregoing, you understand that all User Content posted on, transmitted through, or linked from the Site, is the sole responsibility of the person or entity from which such User Content originated. You understand that Kula does not control, and is not responsible for User Content made available through the Site, and that by using the Site, you may be exposed to User Content that is offensive, indecent, inaccurate, misleading, or otherwise objectionable. Kula makes no representation or warranty as to the accuracy, completeness or authenticity of the information contained in any User Content.</p>
+          <p>Kula does not and cannot review all User Content or other communications and materials posted to or created by Users accessing the Site, and is not in any manner responsible for the content of these communications and materials. You acknowledge that by providing you with the ability to view and distribute User Content and other communications and materials on the site, Kula is merely acting as a passive conduit for such distribution and is not undertaking any obligation or liability relating to any contents or activities on the Site. However, Kula reserves the right to block or remove communications or materials that it determines to be in violation of the Code of Conduct.</p>
+          <p>You are solely responsible for any User Content contributed by you. User Content will not be treated as confidential. Unless otherwise specified, or if an option does not exist on the Site to hide or restrict access to specific User Content, you should assume that such User Content will be displayed publicly. If the Site provides you with the option to do so, you are responsible for indicating what User Content is shared publicly or shared with Posters. We reserve the right to edit or delete any User Content without notice, in whole or in part, at our sole discretion. See Section 8 for details on the Digital Millennium Copyright Act.</p>
+          <p>Violation of any of this Section 4 may result in the removal of some or all of your User Content (including User Profile Content, Items and Requests), removal or reversal of some or all of your displayed actions taken on the Site, including but not limited to actions to follow another User, like User Content, and/or claim an Item or request an Item on the Site; and/or termination of your Kula account at the sole discretion of Kula and/or a Poster (where applicable).</p>
+          <p>You acknowledge that we shall have the right (but not the obligation) in our sole discretion to pre-screen, refuse, or move any Content that is submitted to the Site. You agree that you must evaluate, and bear all risks associated with, the use of any Content, including any reliance on the accuracy, completeness, or usefulness of such Content.</p>
+      
+          <h2><strong> 5. PARTICIPATION</strong></h2>
+          <p>Participation on our Site, including listing Items, is governed by this Agreement.</p>
+      
+          <p><strong> A. Item</strong></p>
+          <p>You must first create a Kula account to be able to list an Item. You need to follow all instructions stated on the Site in order to register.</p>
+      
+          <p><strong> B. General Conditions applicable to Users</strong></p>
+          <p>Posters and Kula reserve the right, in their sole discretion, to cancel, suspend and/or modify a listed Item, or any part of it, in the event of a technical failure, fraud, or any other factor or event that was not anticipated or is not within their control.</p>
+          <p>Posters and Kula reserve the right in their sole discretion to disqualify any individual or Users they find to be:</p>
+          <ul>
+          <li>actually, or presenting the appearance of, tampering with the process or operation of a picking up the Item;</li>
+          <li>acting in violation of this Agreement, or in a manner that is inappropriate and/or not in the best interests of the Item owner; or</li>
+          <li>violating any applicable law or regulation.</li>
+          </ul>
+          
+          <h2><strong> 6. POSTING AN ITEM ON THE SITE</strong></h2>
+          <p>Kula reserves the right to approve any Items before it is posted on the Site. We may refuse any User the right to post Items, if we deem that the Items is incomplete, misleading, inappropriate, or inconsistent with the purpose of the Site or Service.</p>
+      
+          <p><strong> A. Items Requirements</strong></p>
+          <p>Posters agree that any Items will be accurate and will not violate the Code of Conduct outlined above in Section 4. By posting an Item on the Site, you represent, warrant, and agree that your Items meets these requirements.</p>
+          <p>Posting of an Item on our Site does not guarantee the owner any exclusivity with respect to the subject matter, and all Items will be made available to Users of the Site on a non-exclusive basis.</p>
+      
+          <p><strong> B. Poster Obligations</strong></p>
+          <p>By posting Items on our Site and using the Service, Posters agree to:</p>
+          <ol>
+            <li> Provide any Items listed for free and with no expecations of compensation.</li>
+            <li> Be fair and impartial towards other Users, which includes but is not limited to allowing members of any race, religion, or gender to claim an Item. Kula may allow Items on the platform that are exclusive to one or more specific races, religions, or genders if Kula deems the Item to be in support of a positive effort such as from an underrepresented community, a single-gender school, or other at Kula's sole discretion;</li>
+            <li> Include instrictions that outline the terms and conditions you expect from a User who takes your listed Item;</li>
+            <li> Adhere to such instructions and be consistent in their application; and</li>
+            <li> Provide any Items promoted on the Site.</li>
+          </ol>
+      
+          <p><strong> C. User Responsibility for Legal Compliance</strong></p>
+          <p>Users are solely responsible for compliance with applicable laws and regulations regarding the administration of their Items, use or acquisition of any Items received from Users, or the transfer to Users of any technologies in which the User who owns the Item may be involved, including without limitation, import/export requirements, and Kula will have no responsibility or liability thereto.</p>
+      
+          <h2><strong> 7. INTELLECTUAL PROPERTY RIGHTS </strong></h2>
+          <p><strong> A. Kula Content</strong></p>
+          <p>The Site contains various information in the form of data, text, graphics, and other materials from Kula and our third party licensors (the “Kula Content”). You acknowledge that this Site and various elements contained therein are protected by Intellectual Property Rights, and that these worldwide rights are valid and protected in all forms, media, and technologies existing now and hereinafter developed. You also acknowledge that the Kula Content is and shall remain the property of Kula or its licensors. You agree to comply with all intellectual property laws and you shall not encumber any interest in, or assert any rights to, the Kula Content. You may not modify, transmit, participate in the sale or transfer of, or create derivative works based on any Kula Content, in whole or in part.</p>
+          <p>The trademarks, service marks, trade names and logos (collectively, the “Trademarks”) used and displayed on our Site are registered and unregistered trademarks of ours or our licensors. All page headers, custom graphics, button icons, and scripts are service marks, trademarks and/or trade dress of Kula and may not be copied, imitated or used, in whole or in part, in connection with any product or service that is not authorized by us, in any manner that is likely to cause confusion among consumers, or in any manner that disparages or discredits us. The Trademarks used and displayed on our Site are and shall remain the sole property of us or their respective owners. Nothing in this Agreement shall be construed as granting, by implication, estoppel or otherwise, any license, ownership right, or right to use any Trademarks used or displayed on our Site. The misuse of the Trademarks displayed on our Site, or any other Kula Content on our Site, is strictly prohibited.</p>
+          <p>All rights are reserved. Unauthorized copying or use of any Kula Content or Intellectual Property Rights without the express written consent of Kula is strictly prohibited.</p>
+      
+          <p><strong> B. User Content</strong></p>
+          <p>Kula will not have any ownership rights over your User Content. However, Kula needs the following licenses to operate the Site and perform and market the Service on your behalf, on behalf of our other Users, and on our own behalf.</p>
+          <p><strong>(i) General User Content</strong></p>
+          <p>Except as provided below with respect to Items, you hereby grant to us an irrevocable, perpetual, non-exclusive, transferable, royalty-free, fully paid, worldwide license (with the right to sublicense) to use, copy, transmit, reproduce, adapt, modify, publicly perform, publicly display, reformat, translate, excerpt (in whole or in part), create collective works and derivative works, and distribute your User Content for any purpose, commercial, advertising, or otherwise, in any media or distribution method (now known or later developed).</p>
+          <p><strong>(ii) Items</strong></p>
+          <p>Posters have and shall retain sole and exclusive title and ownership of all Items and all Intellectual Property Rights relating thereto. By posting Items on the Site, Posters grant to Kula a non-exclusive, worldwide, royalty-free license to use, distribute, display and reproduce the Items in order to perform the Service.</p>
+        
+          <h2><strong> 8. NO WARRANTIES; LIMITATION OF LIABILITY</strong></h2>
+          <p>Kula has no special relationship with or fiduciary duty to you. You acknowledge that Kula has no control over, and no duty to take any action regarding: which users gain access to the Site; what effects the User Content or Kula Content may have on the users; how users may interpret the User Content or Kula Content; or what actions users may take as a result of having been exposed to the User Content or Kula Content.</p>
+          <p>Although Kula and the Site will make reasonable efforts to store and preserve the material residing on the Site, neither Kula nor the Site is responsible or liable in any way for the failure to store, preserve or access User Content or other materials you transmit or archive on the Site. You are strongly urged to take measures to preserve copies of any data, material, content or information you post or upload on the Site. You are solely responsible for creating back-ups of your User Content.</p>
+          <p>THE SERVICES, CONTENT, SITE AND ANY SOFTWARE OR OTHER PRODUCTS OR SERVICES OFFERED HEREUNDER ARE PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING THAT THE USE OF THE SITE WILL (A) BE TIMELY, UNINTERRUPTED OR ERROR-FREE OR OPERATE IN COMBINATION WITH ANY OTHER HARDWARE, SOFTWARE, SYSTEM OR DATA; (B) MEET YOUR REQUIREMENTS OR EXPECTATIONS; (C) BE FREE FROM ERRORS, OR THAT DEFECTS WILL BE CORRECTED; (D) BE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS. </p>
+          <p>WE DISCLAIM ALL WARRANTIES, INCLUDING, WITHOUT LIMITATION, WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT OF THIRD PARTIES’ RIGHTS AND ANY WARRANTIES ARISING FROM A COURSE OF DEALING, COURSE OF PERFORMANCE, OR USAGE OF TRADE. IN CONNECTION WITH ANY WARRANTY, CONTRACT, OR COMMON LAW TORT CLAIMS, WE SHALL NOT BE LIABLE FOR (I) INCIDENTAL OR CONSEQUENTIAL DAMAGES, LOST PROFITS, OR DAMAGES RESULTING FROM THE USE OR INABILITY TO ACCESS AND USE THE WEBSITE OR THE CONTENT, OR (II) DIRECT DAMAGES IN EXCESS OF AN AMOUNT EQUAL TO $100, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+          <p>By using this Site, you acknowledge that Kula is not responsible or liable for any harm resulting from (1) use of the Site; (2) downloading information contained on the Site, including but not limited to downloads of content posted by users; (3) unauthorized disclosure of images, information or data that results from the upload, download or storage of content; or (4) the temporary or permanent inability to access or retrieve any content from the site, including, without limitation, harm caused by viruses, worms, Trojan horses, or any similar contamination or destructive program.</p>
+          
+          <h2><strong> 9. INDEMNITY</strong></h2>
+          <p>You release, indemnify, defend and hold harmless Kula, our parent, subsidiary, and affiliated companies, and all of their respective past and present officers, directors, members, managers, employees, agents, representatives affiliates, suppliers, successors and assigns (hereafter the “Released Parties”) from and against any and all claims, damages, losses, expenses, and liabilities (including without limitation reasonable fees and costs for attorneys and investigations), arising out of, based on, or in connection with (i) your misuse of the Site, Services or Content; (ii) a dispute with another User of our Site; (iii) your breach of this Agreement; (iv) your violation of any law or the rights of any third party, including intellectual property rights; (v) your User Content; (vi) your negligence resulting in damages of any kind to persons and property, (vii) defamation, slander, libel, violation of right of publicity, infringement of trademark, copyright or other intellectual property rights, property damage, or death or personal injury arising out of or relating to your use of the Site or Service.</p>
+          <p>Without limiting the foregoing, the Released Parties shall have no liability in connection with:</p>
+          <p>(i) any incorrect or inaccurate information caused by Kula's electronic or printing error, or by any of the equipment or programming associated with or utilized in the operation of the Site;</p>
+          <p>(ii) technical failures of any kind, including, but not limited to malfunctions, interruptions, or disconnections in phone lines, internet connectivity or electronic transmission errors, or network hardware or software or failure of the Site;</p>
+          <p>(iii) unauthorized human intervention in any part of the Site’s operation;</p>
+          <p>(iv) technical or human error which may occur in the administration of the Site or Service; or</p>
+          <p>(v) any injury or damage to persons or property which may be caused, directly or indirectly, in whole or in part, from your use of the Site or Service.</p>
+      
+          <h2><strong> 10. DIGITAL MILLENNIUM COPYRIGHT ACT </strong></h2>
+          <p>If you are a copyright owner or an agent thereof and believe that any content on this Site infringes upon your copyrights, you may submit a notification pursuant to the Digital Millennium Copyright Act by providing our Copyright Agent with the following information in writing:</p>
+          <ol>
+            <li> Identification of the work or material being infringed.</li>
+            <li> Identification of the material that is claimed to be infringing, including its location, with sufficient detail so that Kula is capable of finding and verifying its existence.</li>
+            <li> Contact information about the notifying party (“Notifying Party”), including name, address, telephone number and email address.</li>
+            <li> A statement that the Notifying Party has a good faith belief that the material is not authorized by the copyright owner, its agent or law.</li>
+            <li> A statement made under penalty of perjury that the information provided in the notice is accurate and that the Notifying Party is authorized to make the complaint on behalf of the copyright owner.</li>
+            <li> The Notifying Party’s physical or electronic signature.</li>
+          </ol>
+          <p>Kula's designated Copyright Agent to receive notifications of claimed infringement is:</p>
+          <span>Copyright Agent</span><br>
+          <span>Kula</span><br>
+          <span>Email: support@kula.com</span><br><br>
+      
+          <h2><strong> 11. APPLICABLE LAW</strong></h2>
+          <p>This Agreement shall be governed by the internal substantive laws of the State of Indiana, without respect to its conflict of laws principles.</p>
+      
+          <h2><strong>12. <u>BINDING ARBITRATION</u></strong></h2>
+          <p>In the event of a dispute arising under or relating to this Agreement, the Content, the Site or the Services (each, a <u>“Dispute”</u>), either party may elect to finally and exclusively resolve the dispute by binding arbitration governed by the Federal Arbitration Act (<u>“FAA”</u>). Any election to arbitrate, at any time, shall be final and binding on the other party. IF EITHER PARTY CHOOSES ARBITRATION, NEITHER PARTY SHALL HAVE THE RIGHT TO LITIGATE SUCH CLAIM IN COURT OR TO HAVE A JURY TRIAL. DISCOVERY AND APPEAL RIGHTS MAY ALSO BE LIMITED IN ARBITRATION. All disputes will be resolved before a neutral arbitrator, whose decision will be final except for a limited right of appeal under the FAA. Any court in Marion County, Indiana may enforce the arbitrator’s award. The arbitration shall be administered by the Judicial Arbitration and Mediation Services (<u>“JAMS”</u>) pursuant to JAMS’ Streamlined Arbitration Rules and Procedures, if applicable, or otherwise pursuant to its Comprehensive Arbitration Rules and Procedures and in accordance with the Expedited Procedures in those Rules (the <u>“JAMS Rules”</u>). Such disputes will be resolved by the arbitrator as determined under the JAMS Rules. The arbitration may be conducted in person, through the submission of documents, by phone, or online. If conducted in person, the arbitration shall take place in Marion County, Indiana. The parties may litigate in court to compel arbitration, to stay proceeding pending arbitration, or to confirm, modify, vacate, or enter judgment on the award entered by the arbitrator. In addition, we may litigate in court to seek injunctive relief.</p>
+      
+          <h2><strong> 13. <u>CLASS ACTION WAIVER</u></strong></h2>
+          <p>You agree that any arbitration or proceeding shall be limited to the Dispute between us and you individually. To the full extent permitted by law, (i) no arbitration or proceeding shall be joined with any other; (ii) there is no right or authority for any Dispute to be arbitrated or resolved on a class action-basis or to utilize class action procedures; and (iii) there is no right or authority for any Dispute to be brought in a purported representative capacity on behalf of the general public or any other persons. YOU AGREE THAT YOU MAY BRING CLAIMS AGAINST US ONLY IN YOUR INDIVIDUAL CAPACITY AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.</p>
+      
+          <h2><strong> 14. SEVERABILITY </strong></h2>
+          <p>If any provision of this Agreement is held to be invalid or unenforceable, such provision shall be deemed superseded by a valid enforceable provision that most closely matches the intent of the original provision and the remaining provisions shall be enforced.</p>
+      
+          <h2><strong> 15. NON-WAIVER </strong></h2>
+          <p>The failure of Kula to exercise or enforce any right or provision of this Agreement shall not constitute a waiver of such right or provision.</p>
+      
+          <h2><strong> 16. ASSIGNMENT </strong> </h2>
+          <p>You may not assign any of your rights under these Terms, and any such attempt will be void. Kula may assign its rights to any of its affiliates or subsidiaries, or to any successor in interest of any business associated with the Service.</p>
+      
+          <h2><strong> 17. TERMINATION </strong></h2>
+          <p>Kula reserves the right in its sole discretion to refuse, suspend, or terminate your account, your access to our Site or any portion of our Site without notice. We may terminate this Agreement, at our discretion without explanation and notice, though we will strive to provide a timely explanation in most cases. If you wish to terminate this Agreement, you may do so by notifying Kula at any time and closing your account for the Service. Your notice should be sent in writing. Termination of the Agreement may result in the immediate deletion of any or all of your User Content. Kula will not have any liability whatsoever to you for any suspension or termination, including for deletion of your User Content. All provisions of this Agreement which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.</p>
+      
+          <h2><strong> 18. ENTIRE AGREEMENT </strong></h2>
+          <p>The Agreement constitutes the entire agreement between you and us with respect to your use of our Site and Service for exchanging items, and supersedes all prior or contemporaneous communications and proposals, whether electronic, oral or written, between you and us with respect to our Site and Service.</p>
+          
+          <h2><strong> 19. LINKS TO THIRD PARTY WEB SITES </strong></h2>
+          <p>Our Site may contain links to third party websites. Any such links are provided for your convenience only. We do not control those websites, and we are not responsible for their contents or practices, including their privacy practices. We do not endorse the operators of those sites, nor do we endorse or make any representations with respect to the contents of those sites or any products offered on those sites.</p>
+      
+          <h2><strong> 20. CONTACT US </strong></h2>
+          <p>Questions or comments regarding our Site, including any reports of non-functioning links, should be submitted using our email address at support@kula.com.</p>
+          <p>Last Updated: March 13, 2021</p>
+          <p><br><br></p>
+        </div>
+
+        <div class="orient-contents-horizontally-dialog">
+          <span class="horizontal-spacer"></span>
+          <span class="horizontal-spacer"></span>
+          <button mat-raised-button matStepperNext class="white-color" color="primary">Accept</button>
+        </div>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="regForm">
+      <ng-template matStepLabel>Register for an account</ng-template>
+      <mat-checkbox class="stepper-form-content" [(ngModel)]="organization"><b>Are you an organization wishing to donate items?</b></mat-checkbox>
+      
+      <form *ngIf="!organization" class="orient-contents-vertically-dialog stepper-form-content" [formGroup]="regForm" (ngSubmit)="OnSubmitRegistration()">
+        <mat-label class="stepper-form-label"><b>Note: We will not share this information publically or sell your information to any third parties.</b> The only time your information will be shared is when you post an item and someone claims that item. We will then send you and that individual an email and will provide them with your email address so you both can determine where and when the item should be picked up. If you offer to donate an item to fill a request on the site, the same process occurs. Otherwise, we keep this information completely secret. No one can tell who posts and item or requests an item.</mat-label>
+        
+        <mat-label class="stepper-form-label"><b>Basic Information</b></mat-label>
+
+        <mat-form-field appearance="outline" >
+          <mat-label>Enter Your First Name</mat-label>
+          <input matInput placeholder="First Name" type="text" formControlName="firstName"/>
+          <mat-error *ngIf="(firstName?.dirty || firstName?.touched) && firstName?.invalid && firstName?.errors?.required">First name is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" >
+          <mat-label>Enter Your Last Name</mat-label>
+          <input matInput placeholder="Last Name" type="text" formControlName="lastName"/>
+          <mat-error *ngIf="(lastName?.dirty || lastName?.touched) && lastName?.invalid && lastName?.errors?.required">Last name is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" >
+          <mat-label>Enter Your Email</mat-label>
+          <input matInput placeholder="Email" type="email" formControlName="email" />
+          <mat-error *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.required">Email is required.</mat-error>
+          <mat-error *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.email">Enter a valid email address.</mat-error>
+        </mat-form-field>
+      
+        <div class="orient-contents-vertically-dialog" formGroupName="password">
+          <mat-form-field appearance="outline" >
+            <mat-label>Enter a Pasword</mat-label>
+            <input matInput matTooltip="Passwords must have a minimum eight characters, one upper case letter, one lower case letter, one number and one special character." placeholder="Password" type="password" formControlName="password1" [type]="hide ? 'password' : 'text'" />
+            <mat-error *ngIf="(password1?.dirty || password1?.touched) && password1?.invalid && password1?.errors?.required">Password is required.</mat-error>
+            <mat-error *ngIf="(password1?.dirty || password1?.touched) && password1?.invalid && password1?.errors?.pattern">Password isn't strong enough.</mat-error>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Confirm Your Password</mat-label>
+            <input matInput placeholder="Confirm Password" type="password" formControlName="password2" [type]="hide2 ? 'password' : 'text'" />
+            <mat-error *ngIf="(password2?.dirty || password2?.touched) && password2?.invalid && password2?.errors?.required">Confirm Password is required.</mat-error>
+            <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+
+          <mat-error *ngIf="password?.errors?.doesMatchPassword">The passwords must match.</mat-error>
+        </div>
+
+        <mat-label class="stepper-form-label"><b>Enter an address where items you list will be picked up from.</b> In most cases, this will be your home address. If you are not comfortable sharing your home address with someone who wants an item you posted, then post a safe address you can meet that person at. Please keep this address local so someone without transportation can easily commute. Regardless of what you decide, we will not disclose this information without your permission.</mat-label>
+        <div class="orient-contents-vertically-dialog" formGroupName="location">
+          <mat-form-field appearance="outline" >
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="addressOne" type="text" placeholder="Address"></textarea>
+            <mat-error *ngIf="(addressOne?.dirty || addressOne?.touched) && addressOne?.errors?.required">Address is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Address 2</mat-label>
+            <textarea matInput formControlName="addressTwo" type="text" placeholder="Address 2"></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city" type="text" placeholder="City">
+            <mat-error *ngIf="(city?.dirty || city?.touched) && city?.errors?.required">City is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <mat-select type="text" formControlName="state">
+              <mat-optgroup *ngFor="let group of states" [label]="group.parent">
+                <mat-option *ngFor="let name of group.name" [value]="name">
+                  {{ name }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+            <mat-error *ngIf="(state?.dirty || state?.touched) && state?.errors?.required">State is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Postal Code</mat-label>
+            <input matInput #postalCode2 maxlength="5" type="number" formControlName="zipcode" placeholder="Postal Code">
+            <mat-error *ngIf="(zipcode?.dirty || zipcode?.touched) && zipcode?.errors?.required">Postal code is required.</mat-error>
+            <mat-hint align="end">{{ postalCode2.value.length }} / 5</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="orient-contents-horizontally-dialog">
+          <span class="horizontal-spacer"></span>
+          <span class="horizontal-spacer"></span>
+          <button mat-raised-button class="white-color" color="primary" type="submit" [disabled]="!regForm.valid">Register</button>
+        </div>
+      </form>
+
+      <form *ngIf="organization" class="orient-contents-vertically-dialog stepper-form-content" [formGroup]="regForm" (ngSubmit)="OnSubmitRegistration()">
+        <mat-label class="stepper-form-label"><b>Note: We will not share the organization's email address publically.</b> We will however publically include your address and organization name so your organization can benefit from our users' patronization.</mat-label>
+        
+        <mat-label class="stepper-form-label"><b>Basic Information</b></mat-label>
+
+        <mat-form-field appearance="outline" >
+          <mat-label>Enter Your Organization's Name</mat-label>
+          <input matInput placeholder="Organization Name" type="text" formControlName="firstName"/>
+          <mat-error *ngIf="(firstName?.dirty || firstName?.touched) && firstName?.invalid && firstName?.errors?.required">Organization name is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" >
+          <mat-label>Enter an Email Address</mat-label>
+          <input matInput placeholder="Email" type="email" formControlName="email" />
+          <mat-error *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.required">Email is required.</mat-error>
+          <mat-error *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.email">Enter a valid email address.</mat-error>
+        </mat-form-field>
+      
+        <div class="orient-contents-vertically-dialog" formGroupName="password">
+          <mat-form-field appearance="outline" >
+            <mat-label>Enter a Pasword</mat-label>
+            <input matInput matTooltip="Passwords must have a minimum eight characters, one upper case letter, one lower case letter, one number and one special character." placeholder="Password" type="password" formControlName="password1" [type]="hide ? 'password' : 'text'" />
+            <mat-error *ngIf="(password1?.dirty || password1?.touched) && password1?.invalid && password1?.errors?.required">Password is required.</mat-error>
+            <mat-error *ngIf="(password1?.dirty || password1?.touched) && password1?.invalid && password1?.errors?.pattern">Password isn't strong enough.</mat-error>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Confirm Your Password</mat-label>
+            <input matInput placeholder="Confirm Password" type="password" formControlName="password2" [type]="hide2 ? 'password' : 'text'" />
+            <mat-error *ngIf="(password2?.dirty || password2?.touched) && password2?.invalid && password2?.errors?.required">Confirm Password is required.</mat-error>
+            <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+
+          <mat-error *ngIf="password?.errors?.doesMatchPassword">The passwords must match.</mat-error>
+        </div>
+
+        <mat-label class="stepper-form-label"><b>Enter an address where items you donate may be picked up from.</b> In most cases, this will be your organization's address.</mat-label>
+        <div class="orient-contents-vertically-dialog" formGroupName="location">
+          <mat-form-field appearance="outline" >
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="addressOne" type="text" placeholder="Address"></textarea>
+            <mat-error *ngIf="(addressOne?.dirty || addressOne?.touched) && addressOne?.errors?.required">Address is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Address 2</mat-label>
+            <textarea matInput formControlName="addressTwo" type="text" placeholder="Address 2"></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city" type="text" placeholder="City">
+            <mat-error *ngIf="(city?.dirty || city?.touched) && city?.errors?.required">City is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <mat-select type="text" formControlName="state">
+              <mat-optgroup *ngFor="let group of states" [label]="group.parent">
+                <mat-option *ngFor="let name of group.name" [value]="name">
+                  {{ name }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+            <mat-error *ngIf="(state?.dirty || state?.touched) && state?.errors?.required">State is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Postal Code</mat-label>
+            <input matInput #postalCode2 maxlength="5" type="number" formControlName="zipcode" placeholder="Postal Code">
+            <mat-error *ngIf="(zipcode?.dirty || zipcode?.touched) && zipcode?.errors?.required">Postal code is required.</mat-error>
+            <mat-hint align="end">{{ postalCode2.value.length }} / 5</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="orient-contents-horizontally-dialog">
+          <span class="horizontal-spacer"></span>
+          <span class="horizontal-spacer"></span>
+          <button mat-raised-button class="white-color" color="primary" type="submit" [disabled]="!regForm.valid">Register</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-vertical-stepper>
+</html>

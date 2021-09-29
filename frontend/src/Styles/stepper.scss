@@ -1,0 +1,90 @@
+.stepper-form-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex !important;
+  overflow-y: auto !important;
+  height: calc(100% - 64px) !important;
+}
+.stepper-bar {
+  height: 100% !important;
+  width: 100%;
+  
+  // overflow-y: hidden !important;
+}
+.stepper-form-content {
+  overflow-y: auto !important;
+  // width: 50% !important;
+  
+  height: calc(100% - 72px) !important;
+  
+  margin: 24px;
+  
+  text-align: justify;
+}
+.stepper-form-label {
+  padding-bottom: 12px;
+}
+.stepper-terms {
+  // width: 80%;
+  // height: 800px;
+  // margin: 24px auto;
+  overflow-y: auto !important;
+}
+#imageInput{
+  display: none;
+}
+.stepper-cellphone {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  flex-shrink: 0 !important;
+  display: -webkit-flex !important;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.stepper-form-cellphone {
+  width: 80px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-right: 8px;
+  text-align: center;
+}
+.stepper-form-cellphone-country {
+  width: 48px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-right: 8px;
+  text-align: center;
+}
+
+@media all and (max-width: 550px) {
+  
+  .stepper-cellphone {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    width: 100%;
+  }
+  .stepper-form-cellphone {
+    width: 100%;
+    padding-right: 0px;
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left;
+    text-align: left;
+  }
+  .stepper-form-cellphone-country {
+    width: 100%;
+    padding-right: 0px;
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left;
+    text-align: left;
+  }
+}

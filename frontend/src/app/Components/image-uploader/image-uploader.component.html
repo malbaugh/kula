@@ -1,0 +1,29 @@
+<div *ngIf="!dataLoaded" class="data-loader-dialog"><mat-spinner mode="indeterminate"></mat-spinner></div>
+
+<div class="popup-edit-about-form">
+  <header class="popup-form-header orient-contents-horizontally-dialog">
+    <div class="popup-form-title">Select an Image</div>
+    <span class="horizontal-spacer"></span>
+    <button color="warn" (click)="OnExit()" mat-button>
+      <mat-icon color="warn">close</mat-icon>
+    </button>
+  </header>
+
+  <div class="popup-edit-image-container">
+    <image-cropper class="popup-profile-picture"
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="4 / 4"
+        [resizeToHeight]="200"
+        format="png"
+        [roundCropper]="true"
+        (imageCropped)="imageCropped($event)"
+    ></image-cropper>
+  </div>
+  
+  <div class="popup-form-content orient-contents-horizontally-dialog">
+    <span class="horizontal-spacer"></span>
+    <span class="horizontal-spacer"></span>
+    <button color="primary" class="white-color" (click)="OnSave()" mat-raised-button>Save</button>
+  </div>
+</div>

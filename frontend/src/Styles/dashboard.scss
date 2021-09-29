@@ -1,0 +1,78 @@
+.dashboard-form-main {
+  background-color: #f4f4f4 !important;
+  margin: 0px;
+  padding: 12px;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  display: -webkit-flex !important;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: calc(100% - 64px) !important;
+  overflow-y: auto !important;
+}
+.dashboard-item {
+  margin: 12px;
+  min-height: 300px;
+  min-width: 300px;
+  // max-width: 98%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+.dashboard-information {
+  padding-left: 24px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+.dashboard-progress-bar {
+  padding-top: 12px;
+}
+.dashboard-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 0px !important;
+}
+.dashboard-chart {
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 400px;
+  height: 400px;  
+}
+.dashboard-spending {
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 90vw !important;
+  height: 400px; 
+}
+.dashboard-subtitle {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.dashboard-button {
+  width: 144px;
+}
+.dashboard-line {
+  padding-bottom: 12px;
+  text-align: justify;
+}
+@media all and (max-width: 500px) {
+  .dashboard-item {
+    margin: 6px;
+    min-height: 0px;
+    min-width: 0px;
+    height: 200px;
+    width: 200px;
+  }
+  .dashboard-form-main {
+    padding: 6px;
+  }
+  .dashboard-chart {
+    width: 300px;
+    height: 300px;  
+  }
+}

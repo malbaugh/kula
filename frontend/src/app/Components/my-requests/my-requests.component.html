@@ -1,0 +1,159 @@
+<div *ngIf="!dataLoaded" class="data-loader">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="(!loaded) && (dataLoaded)" class="data-loader-dialog"><mat-spinner mode="indeterminate"></mat-spinner></div>
+
+<html *ngIf="dataLoaded" class="orient-contents-vertically search-form-main">
+  <mat-toolbar class="background-darker search-bar">
+    <button class="filter-button filter-first-row" type="button" color="primary" (click)="drawer.toggle()" matTooltip="Filter the results." matTooltipPosition="above" mat-button><mat-icon class="icon-with-text">filter_list</mat-icon>Filters</button>
+    
+    <span class="horizontal-spacer filter-first-row"></span>
+
+    <form [formGroup]="searchForm" (ngSubmit)="OnSearchSubmit()">
+      <mat-form-field class="search-form">
+        <input formControlName="search" type="text" matInput>
+      </mat-form-field>
+
+      <button (onClick)="OnSearchSubmit()" mat-icon-button>
+        <mat-icon color="primary" matSuffix>search</mat-icon>
+      </button>
+    </form>
+
+    <span class="horizontal-spacer"></span>
+
+    <button (click)="CreateItemRequest()" color="primary" class="white-color add-button-mobile-hide" matTooltip="Request a new item." matTooltipPosition="left" mat-raised-button>
+      <mat-icon class="icon-with-text">emoji_people</mat-icon>Request Item
+    </button>
+
+    <button (click)="CreateItemRequest()" color="primary" class="white-color add-button-mobile-display" matTooltip="Request a new item." matTooltipPosition="left" mat-mini-fab>
+      <mat-icon matSuffix>emoji_people</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-toolbar class="search-bar-filters">
+    <button class="filter-button filter-second-row" type="button" color="primary" (click)="drawer.toggle()" matTooltip="Filter the results." matTooltipPosition="above" mat-button><mat-icon class="icon-with-text">filter_list</mat-icon>Filters</button>
+    <button class="filter-button white-color filter-second-row-mobile" type="button" color="primary" (click)="drawer.toggle()" matTooltip="Filter the results." matTooltipPosition="above" mat-mini-fab><mat-icon>filter_list</mat-icon></button>
+
+    <mat-chip-list [multiple]="true" [selectable]="true" class="orient-contents-horizontally filter-chips">
+      <mat-chip color="primary" [class]="chip.class" *ngFor="let chip of coveredStatuses" [selected]="chip.state" (selectionChange)="SelectToolbarFilter($event, chip.name)" (click)="chip.state = !chip.state">
+        {{chip.name}}
+      </mat-chip> 
+    </mat-chip-list>
+  </mat-toolbar>
+
+  <mat-drawer-container class="search-container">
+    <mat-drawer class="sidenav" mode="side" #drawer>
+      <form class="sidenav-content" [formGroup]="filterForm" (ngSubmit)="OnSearchSubmit()">
+        <div class="orient-contents-horizontally sidenav-filter-title sidenav-information">
+          <mat-card-title class="item-title-no-padding">Filters</mat-card-title>
+          <span class="horizontal-spacer"></span>
+          <div class="add-button-mobile-display"><button color="primary" (click)="OnResetFilters()" mat-icon-button><mat-icon matSuffix>cached</mat-icon></button></div>
+          <div class="add-button-mobile-hide"><button color="primary" (click)="OnResetFilters()" mat-button><mat-icon class="icon-with-text">cached</mat-icon>Reset Filters</button></div>
+        </div>
+
+        <div class="orient-contents-vertically sidenav-information">
+          <mat-label>Date Item Posted</mat-label>
+          <mat-form-field appearance="outline" >
+            <mat-label>Date Posted</mat-label>
+            <input matInput [matDatepicker]="picker1" placeholder="Date Posted" formControlName="postedDate" >
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+          <mat-label>Address</mat-label>
+          <mat-form-field appearance="outline" >
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city" type="text" placeholder="City">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <mat-select type="text" formControlName="state">
+              <mat-option>None</mat-option>
+              <mat-optgroup *ngFor="let group of states" [label]="group.parent">
+                <mat-option *ngFor="let name of group.name" [value]="name">
+                  {{ name }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Postal Code</mat-label>
+            <input matInput #postalCode2 maxlength="5" type="number" formControlName="zipcode" placeholder="Postal Code">
+            <mat-hint align="end">{{ postalCode2.value.length }} / 5</mat-hint>
+          </mat-form-field>
+        </div>
+       
+        <div class="orient-contents-vertically sidenav-information">
+          <div class="orient-contents-horizontally">
+            <span class="horizontal-spacer"></span>
+            <span class="horizontal-spacer"></span>
+            <button mat-raised-button class="white-color" color="primary" type="submit">Go</button>
+          </div>
+        </div>
+      </form>
+    </mat-drawer>
+
+    <mat-drawer-content class="drawer-content">
+      <div class="tab-container">
+        <div *ngIf="loaded" class="tab-content">
+          <mat-list *ngFor="let itemRequest of pageItemRequests" [class.selected]="itemRequest === selectedItemRequest" (click)="OnSelect(itemRequest)">
+            <mat-card class="item-card">
+              
+              <div class="item-content orient-contents-vertically">
+                <mat-card-title class="profile-title profile-about-line">{{itemRequest.Name}}</mat-card-title>
+                <p class="profile-subtitle profile-about-line">{{itemRequest.Description}}</p>
+                <div class="orient-contents-horizontally left-justify-contents top-padding">
+                  <mat-icon class="profile-text">room</mat-icon>
+                  <div class="profile-left-padding profile-text left-text">{{itemRequest.City}}, {{itemRequest.State}} {{itemRequest.Zipcode}}</div>
+                  <mat-icon class="profile-left-padding mobile-hide profile-text">event_note</mat-icon>
+                  <div class="profile-left-padding mobile-hide profile-text left-text">Requested on {{itemRequest.CreatedAt.getMonth() + 1}}/{{itemRequest.CreatedAt.getDate()}}/{{itemRequest.CreatedAt.getFullYear()}}</div>
+                </div>
+                <div class="orient-contents-horizontally left-justify-contents top-padding">
+                  <div class="left-text profile-emphasize-text">{{itemRequest.Offers}}</div>
+                  <div class="profile-left-padding left-text profile-text">Offers</div>
+                  <!-- <div class="profile-left-padding left-text profile-emphasize-text">{{itemRequest.Favorites}}</div>
+                  <div class="profile-left-padding left-text profile-text">Favorites</div> -->
+                </div>
+  
+                <span class="search-mobile-remove-padding"></span>
+                <mat-chip-list class="orient-contents-horizontally search-chips">
+                  <mat-chip color="primary" class="white-color mobile-hide" selected>{{CheckCoveredStatus(itemRequest)}}</mat-chip>
+                  <mat-chip color="accent" class="white-color mobile-display" selected>{{CheckCoveredStatus(itemRequest)}}</mat-chip>
+                </mat-chip-list>
+              </div>
+  
+              <span class="search-mobile-remove-padding"></span>
+              <span class="divider mobile-display"></span>
+              <div class="right-justify-contents orient-contents-vertically mobile-hide">
+                <button *ngIf="!RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)" (click)="EditItemRequest(itemRequest)" mat-raised-button color="primary" matTooltip="Edit this request." matTooltipPosition="above" class="button-with-icon-text"><mat-icon class="icon-with-text">edit</mat-icon>Edit Request</button>
+                <span *ngIf="!RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)"class="search-mobile-remove-padding"></span>
+                <button *ngIf="!RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)" (click)="RemoveItemRequest(itemRequest)" mat-raised-button color="warn" matTooltip="Remove this request." matTooltipPosition="above" class="button-with-icon-text"><mat-icon class="icon-with-text">delete</mat-icon>Delete Request</button>
+
+                <button *ngIf="RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)" (click)="MakeItemRequestAvailable(itemRequest)" mat-raised-button color="primary" matTooltip="Ask for this item again." matTooltipPosition="above" class="button-with-icon-text"><mat-icon class="icon-with-text">published_with_changes</mat-icon>Ask Again</button>
+                <span *ngIf="RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)" class="search-mobile-remove-padding"></span>
+                <button *ngIf="RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)" (click)="MarkRequestFilled(itemRequest)" mat-raised-button color="accent" matTooltip="Confirm you have the item you requested." matTooltipPosition="above" class="button-with-icon-text"><mat-icon class="icon-with-text">done</mat-icon>Item Received</button>
+              </div>
+              <div class="orient-contents-horizontally mobile-display">
+                <button *ngIf="!RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)" (click)="EditItemRequest(itemRequest)" mat-raised-button color="primary" matTooltip="Edit this request." matTooltipPosition="above" class="button-with-icon-text"><mat-icon class="icon-with-text">edit</mat-icon>Edit Request</button>
+                <span *ngIf="!RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)" class="button-spacer"></span>
+                <button *ngIf="!RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)" (click)="RemoveItemRequest(itemRequest)" mat-raised-button color="warn" matTooltip="Remove this request." matTooltipPosition="above" class="button-with-icon-text"><mat-icon class="icon-with-text">delete</mat-icon>Delete Request</button>
+
+                <button *ngIf="RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)" (click)="MakeItemRequestAvailable(itemRequest)" mat-raised-button color="primary" matTooltip="Ask for this item again." matTooltipPosition="above" class="button-with-icon-text"><mat-icon class="icon-with-text">published_with_changes</mat-icon>Ask Again</button>
+                <span *ngIf="RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)" class="button-spacer"></span>
+                <button *ngIf="RequestedItemCovered(itemRequest) && !RequestFilled(itemRequest)" (click)="MarkRequestFilled(itemRequest)" mat-raised-button color="accent" matTooltip="Confirm you have the item you requested." matTooltipPosition="above" class="button-with-icon-text"><mat-icon class="icon-with-text">done</mat-icon>Item Received</button>
+              </div>
+            </mat-card>
+          </mat-list>
+        </div>
+      </div>
+      
+
+      <span class="horizontal-spacer"></span>
+      <mat-paginator class="tab-paginator" [pageIndex]="pageIndex" [length]="allItemRequests.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="GetItemRequests($event)"></mat-paginator>
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+</html>

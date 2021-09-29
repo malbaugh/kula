@@ -1,0 +1,138 @@
+.mobile-display {
+	display: none !important;
+}
+.mobile-hide {
+	display: block;
+}
+.button-spacer {
+	padding-left: 24px !important;
+	padding-right: 24px !important;
+}
+.add-button-mobile-hide {
+	display: block;
+}
+.add-button-mobile-display {
+	display: none !important;
+}
+
+.filter-button {
+  margin-right: 12px;
+}
+.filter-first-row {
+	display: block;
+}
+.filter-second-row {
+	display: none !important;
+}
+.filter-second-row-mobile {
+	display: none !important;
+}
+@media all and (max-width: 366px) {
+	.add-button-mobile-hide {
+		display: none !important;
+	}
+	.add-button-mobile-display {
+		display: block !important;
+	}
+	.search-form {
+		width: 50vw !important;
+	}
+	.filter-first-row {
+		display: none !important;
+	}
+	.filter-second-row-mobile {
+		display: block !important;
+	}
+	.filter-second-row {
+		display: none !important;
+	}
+	.search-bar-filters {
+		height: 120px !important;
+	}
+	.mobile-display {
+		display: block !important;
+	}
+	.mobile-hide {
+			display: none !important;
+	}
+}
+@media (min-width: 367px) and (max-width: 450px) {
+	.add-button-mobile-hide {
+		display: none !important;
+	}
+	.add-button-mobile-display {
+		display: block !important;
+	}
+	.search-form {
+		width: 70vw !important;
+	}
+	.filter-first-row {
+		display: none !important;
+	}
+	.filter-second-row-mobile {
+		display: block !important;
+	}
+	.filter-second-row {
+		display: none !important;
+	}
+	.mobile-display {
+		display: block !important;
+	}
+	.mobile-hide {
+			display: none !important;
+	}
+}
+@media (min-width: 451px) and (max-width: 480px) {
+	.add-button-mobile-hide {
+		display: none !important;
+	}
+	.add-button-mobile-display {
+		display: block !important;
+	}
+	.search-form {
+		width: 70vw !important;
+	}
+	.filter-first-row {
+		display: none !important;
+	}
+	.filter-second-row-mobile {
+		display: block !important;
+	}
+	.filter-second-row {
+		display: none !important;
+	}
+	.mobile-display {
+		display: block !important;
+	}
+	.mobile-hide {
+			display: none !important;
+	}
+}
+@media (min-width: 481px) and (max-width: 708px) {
+	.search-form {
+		width: 55vw !important;
+	}
+	.filter-first-row {
+		display: none !important;
+	}
+	.filter-second-row {
+		display: block !important;
+	}
+	.mobile-display {
+		display: block !important;
+	}
+	.mobile-hide {
+			display: none !important;
+	}
+}
+@media (min-width: 709px) and (max-width: 1084px) {
+	.mobile-display {
+			display: block !important;
+	}
+	.mobile-hide {
+			display: none !important;
+	}
+	.search-form {
+		width: 50vw !important;
+	}
+}

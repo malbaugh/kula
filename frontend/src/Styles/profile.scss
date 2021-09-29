@@ -1,0 +1,345 @@
+.profile-form-main {
+  padding: 24px !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex !important;
+  overflow-y: auto !important;
+  height: calc(100% - 64px) !important;
+  background-color:#f4f4f4;
+}
+.profile-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex !important;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  flex-shrink: 0 !important;
+}
+.profile-info-line {
+  padding-bottom: 6px !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  display: -webkit-flex !important;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  text-align: left;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+  flex-shrink: 0 !important;
+}
+.profile-about-line {
+  padding-bottom: 6px !important;
+}
+.profile-university-logo {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 180px;
+  height: 180px;
+  border: none;
+}
+.profile-information {
+  padding-left: 24px;
+  min-height: 180px;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  display: -webkit-flex !important;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  text-align: left;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  flex-shrink: 0 !important;
+}
+.profile-progress-bar {
+  width: 160px !important;
+}
+.profile-linkedin-logo {
+  width: 28px;
+  height: 28px;
+  padding-left: 12px;
+  padding-right: 24px;
+}
+.profile-title {
+  // text-transform: uppercase;
+  line-height: 1.4;
+  font-weight: bold;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+.profile-subtitle {
+  font-size: 18px;
+  color: #ababcc;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+.profile-statistics {
+  padding: 0px;
+  margin: 0px !important;
+  font-size: 12px;
+}
+.profile-about {
+  background-color: #282e34;
+  color: #f4f4f4;
+  border-radius: 5px;
+  padding: 24px;
+  margin-top: 24px;
+  margin-bottom: 48px;
+}
+.profile-action-icons {
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 24px;
+  background-color:#ceab4d;
+}
+.profile-image-container {
+  position: relative;
+  display: inline-block;
+}
+.profile-edit-image-container {
+  position: relative;
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  max-height: 188px;
+}
+.profile-edit-image-container .profile-edit-photo-hover-text {
+  position: absolute;
+  display: none;
+  top: 50%;
+  left:  50%;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);   
+  z-index: 2;
+}
+.profile-edit-image-container .profile-edit-photo-background {
+  position: absolute;
+  display: none;
+  top: 0;
+  left:  0;
+  bottom: 0;
+  right: 0;
+  background-color:rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 1;
+}
+.profile-edit-image-container:hover .profile-edit-photo-hover-text {
+  display: block;
+}
+.profile-edit-image-container:hover .profile-edit-photo-background {
+  display: block;
+}
+.profile-editer-photo {
+  padding-top: 7px;	
+  padding-right: 7px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.profile-image {
+  background-size: cover;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 5px solid;
+}
+.profile-image-container:hover .profile-edit-photo {
+  display: block;
+}
+.profile-edit-photo {
+  padding-top: 7px;	
+  padding-right: 7px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+.edit-data-left {
+  width: 45%;
+}
+.edit-data-right {
+  width: 45%;
+}
+.profile-padding {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+.profile-mobile-padding {
+  display: none;
+}
+.profile-right-section {
+  min-width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex !important;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: right;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  flex-shrink: 0 !important;
+}
+.profile-competing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex !important;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  padding-top: 0px;
+}
+.profile-edit-button {
+  display: block !important;
+}
+.profile-mobile-edit-button {
+  display: none !important;
+}
+.profile-edit-container {
+  display: none !important;
+}
+.profile-tabs {
+  height: 100%;
+  overflow-y: visible !important;
+}
+.profile-tab {
+  height: 100%;
+  overflow-y: visible;
+}
+.profile-left-padding {
+  padding-left: 6px;
+}
+.profile-emphasize-text {
+  font-weight: bold;
+  font-size: 18px;
+  color: #f4f4f4;
+}
+.profile-text {
+  // font-size: 18px;
+  color: #ababcc;
+}
+
+@media all and (max-width: 700px) {
+  .profile-about {
+    margin: 0px;
+  }
+  .profile-content {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+    text-align: center;
+    flex-shrink: 0 !important;
+    padding: 12px !important;
+  }
+  .profile-edit-button {
+    display: none !important;
+  }
+  .profile-mobile-edit-button {
+    display: block !important;
+  }
+  .profile-edit-container {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    display: -webkit-flex !important;
+    width: 100%;
+    -webkit-box-pack: right !important;
+        -ms-flex-pack: right !important;
+            justify-content: right !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+    flex-shrink: 0 !important;
+  }
+  .profile-information {
+    padding-left: 0px;
+    padding-bottom: 24px;
+    padding-top: 24px;
+    min-height: 0px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .profile-info-line {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .profile-padding {
+    display: none !important;
+  }
+  .profile-buttons {
+    margin-bottom: 12px !important;
+  }
+  .profile-right-section {
+    text-align: center !important;
+  }
+  .profile-competing {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-top: 12px;
+  }
+  .profile-mobile-padding {
+    display: block;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+  }
+  .profile-form-main {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .profile-chips {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    display: -webkit-flex !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+    text-align: center;
+    flex-shrink: 0 !important;
+  }
+  .profile-university-logo {
+    display: none !important;
+  }
+  .profile-linkedin-logo {
+    padding-right: 0px;
+  }
+  .profile-statistics {
+    padding-bottom: 12px !important;
+  }
+  
+}

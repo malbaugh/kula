@@ -1,0 +1,103 @@
+.popup-form {
+  width: 444px;
+  max-height: 85vh !important;
+}
+.popup-edit-about-form {
+  width: 80vw;
+  max-height: 85vh;
+}
+.popup-form-content {
+  padding: 24px !important;
+  overflow-y: auto !important;
+  max-height: calc(85vh - 95px) !important;
+}
+.popup-form-tab-content {
+  padding: 24px !important;
+  overflow-y: auto !important;
+  max-height: calc(85vh - 160px) !important;
+}
+.popup-form-header {
+  margin: 0px !important; 
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  display: -webkit-flex !important;
+  -webkit-box-align: stretch !important;
+      -ms-flex-align: stretch !important;
+          align-items: stretch !important;
+  background-color: #282e34;
+  color: #f4f4f4;
+  flex-shrink: 0 !important;
+}
+.popup-form-title {
+  line-height: 1.2 !important;
+  height: 100% !important;
+  font-size: 24px !important;
+  padding: 10px 10px !important;
+  text-transform: uppercase !important;
+  font-weight: bold !important;
+  margin-bottom: 0px !important;
+}
+.popup-form-subtitle {
+  height: 100% !important;
+  margin: 10px 0px !important;
+}
+.popup-form-footer {
+  margin: 0px !important;
+}
+.popup-profile-picture {
+  height: 70vh !important;
+}
+.popup-edit-image-container {
+  max-height: 90vh;
+  width: 100%;
+}
+.popup-signup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.popup-form-cellphone {
+  width: 80px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-right: 8px;
+}
+.popup-form-cellphone-country {
+  width: 48px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-right: 8px;
+}
+.popup-radio-group {
+  margin: 15px 0;
+}
+.popup-radio-button {
+  margin: 5px;
+}
+.popup-paragraph {
+  font-size: medium;
+  text-justify: inter-word;
+  text-align: justify;
+  padding-bottom: 12px;
+}
+
+@media all and (max-width: 1000px) {
+  .popup-edit-about-form {
+    width: 80vw !important;
+  }
+}
+@media all and (max-width: 600px) {
+  .popup-form {
+    width: 80vw !important;
+  }
+  .popup-edit-about-form {
+    width: 80vw !important;
+  }
+}

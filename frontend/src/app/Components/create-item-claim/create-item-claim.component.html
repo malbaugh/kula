@@ -1,0 +1,29 @@
+<div *ngIf="!dataLoaded" class="data-loader-dialog"><mat-spinner mode="indeterminate"></mat-spinner></div>
+
+<div class="popup-form">
+  <header class="popup-form-header orient-contents-horizontally-dialog">
+    <div class="popup-form-title">Claim an Item</div>
+
+    <span class="horizontal-spacer"></span>
+
+    <button color="warn" (click)="OnExit()" mat-button>
+      <mat-icon color="warn">close</mat-icon>
+    </button>
+  </header>
+
+  <div class="popup-form-tab-content">
+    <form *ngIf="dataLoaded" class="orient-contents-vertically-dialog" [formGroup]="itemClaimForm" (ngSubmit)="OnSubmitClaim()">
+      <mat-label class="divider">Provide a short explanation of why you want this item. There may be several people who want this item. In that case, the owner will use what you write below to help them decide who gets the item.</mat-label>
+      <mat-form-field appearance="outline" >
+        <mat-label>Short Description</mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" placeholder="Description" maxlength="200" type="text" formControlName="description"></textarea>
+        <mat-hint align="end">{{itemClaimForm.controls['description'].value?.length || 0}}/200</mat-hint>
+        <button mat-button *ngIf="itemClaimForm.controls['description'].dirty" matSuffix mat-icon-button aria-label="Clear" (click)="itemClaimForm.controls['description'].reset()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button class="white-color" color="primary" type="submit" [disabled]="!itemClaimForm.valid">Claim Item</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<html>
+  <mat-toolbar *ngIf="currentUserService.CurrentUserValue" class="toolbar">
+    <mat-toolbar-row>
+
+      <a routerLink="/welcome">
+        <img class="app-logo" src="https://kula-images.s3.amazonaws.com/logo.png">
+      </a>
+
+      <span class="horizontal-spacer"></span> 
+
+      <form *ngIf="currentUserService.UserLocation != '/search'" [formGroup]="searchForm" (ngSubmit)="OnSearchSubmit()">
+        <mat-form-field class="app-search white-color">
+          <input class="white-color" formControlName="search" type="text" matInput>
+        </mat-form-field>
+
+        <button class="app-search-button" (onClick)="OnSearchSubmit()" type="submit" mat-icon-button>
+          <mat-icon class="white-color" matSuffix>search</mat-icon>
+        </button>
+      </form>
+      
+      <span class="app-search-space"></span>
+
+      <button class="app-white-buttons" (click)="OnSearchSubmit()" mat-button>Explore</button>
+      <button class="app-white-buttons" (click)="OnUserItems()" mat-button>My Items</button>
+      <button *ngIf="!currentUserService.CurrentUserValue.Organization" class="app-white-buttons" (click)="OnUserRequests()" mat-button>My Requests</button>
+      <button *ngIf="currentUserService.UnreadCount != 0" class="app-white-buttons" (click)="OpenInbox()" mat-icon-button><mat-icon matBadge="{{currentUserService.UnreadCount}}" matBadgeColor="warn" matSuffix>forum</mat-icon></button>
+      <button *ngIf="currentUserService.UnreadCount == 0" class="app-white-buttons" (click)="OpenInbox()" mat-icon-button><mat-icon matSuffix>forum</mat-icon></button>
+      <button class="app-white-buttons button-spacer" (click)="OnReport()" mat-icon-button><mat-icon matSuffix>help_outline</mat-icon></button>
+
+      <button class="app-white-buttons" [matMenuTriggerFor]="menu1" mat-button><mat-icon>menu</mat-icon></button>
+      <mat-menu #menu1="matMenu">
+        <button (click)="OnListItem()" mat-menu-item><mat-icon>volunteer_activism</mat-icon>Donate Item</button>
+        <button *ngIf="!currentUserService.CurrentUserValue.Organization" (click)="OnMakeRequest()" mat-menu-item><mat-icon>emoji_people</mat-icon>Request Item</button>
+        <button (click)="OnAccountSettings()" mat-menu-item><mat-icon>manage_accounts</mat-icon>Account Settings</button>
+        <button (click)="OnLogout()" mat-menu-item><mat-icon>logout</mat-icon>Logout</button>
+      </mat-menu>
+
+      <button *ngIf="currentUserService.UnreadCount != 0" class="app-mobile-menu" (click)="OpenInbox()" mat-icon-button><mat-icon class="white-color" matBadge="{{currentUserService.UnreadCount}}" matBadgeColor="warn" matSuffix>forum</mat-icon></button>
+      <button *ngIf="currentUserService.UnreadCount == 0" class="app-mobile-menu" (click)="OpenInbox()" mat-icon-button><mat-icon class="white-color" matSuffix>forum</mat-icon></button>
+      <button class="app-mobile-menu button-spacer" (click)="OnReport()" mat-icon-button><mat-icon class="white-color" matSuffix>help_outline</mat-icon></button>
+      <button class="app-mobile-menu" [matMenuTriggerFor]="menu2" mat-button><mat-icon class="white-color">menu</mat-icon></button>
+      <mat-menu #menu2="matMenu">
+        <button (click)="OnSearchSubmit()" mat-menu-item><mat-icon>explore</mat-icon>Explore</button>
+        <button (click)="OnUserItems()" mat-menu-item><mat-icon>inventory</mat-icon>My Items</button>
+        <button *ngIf="!currentUserService.CurrentUserValue.Organization" (click)="OnUserRequests()" mat-menu-item><mat-icon>receipt_long</mat-icon>My Requests</button>
+        <button (click)="OnListItem()" mat-menu-item><mat-icon>volunteer_activism</mat-icon>Donate Item</button>
+        <button *ngIf="!currentUserService.CurrentUserValue.Organization" (click)="OnMakeRequest()" mat-menu-item><mat-icon>emoji_people</mat-icon>Request Item</button>
+        <button (click)="OnAccountSettings()" mat-menu-item><mat-icon>manage_accounts</mat-icon>Account Settings</button>
+        <button (click)="OnLogout()" mat-menu-item><mat-icon>logout</mat-icon>Logout</button> 
+      </mat-menu>
+    </mat-toolbar-row> 
+  </mat-toolbar>
+
+  <mat-toolbar *ngIf="!(currentUserService.CurrentUserValue) && (currentUserService.UserLocation != '/')" class="toolbar">
+    <mat-toolbar-row>
+      
+      <a routerLink="/">
+        <img class="app-logo" src="https://kula-images.s3.amazonaws.com/logo.png">
+      </a>
+      
+      <span class="horizontal-spacer"></span>
+
+      <form *ngIf="currentUserService.UserLocation != '/search'" [formGroup]="searchForm" (ngSubmit)="OnSearchSubmit()">
+        <mat-form-field class="app-search white-color">
+          <input class="white-color" formControlName="search" type="text" matInput>
+        </mat-form-field>
+
+        <button class="app-search-button" (onClick)="OnSearchSubmit()" type="submit" mat-icon-button>
+          <mat-icon class="white-color" matSuffix>search</mat-icon>
+        </button>
+      </form>
+
+      <span class="app-search-space"></span>
+
+      <button class="app-white-buttons" (click)="OnSearchSubmit()" mat-button>Explore</button>
+      <button class="app-white-buttons" (click)="OnLogin()" mat-button>Login</button>
+      <button class="app-white-buttons" *ngIf="currentUserService.UserLocation != '/registration'" (click)="OnRegister()" mat-button>Register</button>
+      <button class="app-white-buttons" (click)="OnHome()" mat-button>Home</button>
+      <button class="app-white-buttons" (click)="OnReport()" mat-icon-button><mat-icon matSuffix>help_outline</mat-icon></button>
+
+      <button class="app-mobile-menu" (click)="OnReport()" mat-icon-button><mat-icon class="white-color"matSuffix>help_outline</mat-icon></button>
+      <button class="app-mobile-menu" [matMenuTriggerFor]="menu5" mat-button><mat-icon class="white-color">menu</mat-icon></button>
+      <mat-menu #menu5="matMenu">
+        <button (click)="OnSearchSubmit()" mat-menu-item><mat-icon>explore</mat-icon>Explore</button>
+        <button (click)="OnLogin()" mat-menu-item><mat-icon>login</mat-icon>Login</button>
+        <button *ngIf="currentUserService.UserLocation != '/registration'" (click)="OnRegister()" mat-menu-item><mat-icon>how_to_reg</mat-icon>Register</button>
+        <button (click)="OnHome()" mat-menu-item><mat-icon>home</mat-icon>Home</button>
+      </mat-menu>
+      
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</html>

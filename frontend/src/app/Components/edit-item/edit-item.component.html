@@ -1,0 +1,46 @@
+<div *ngIf="!dataLoaded" class="data-loader-dialog"><mat-spinner mode="indeterminate"></mat-spinner></div>
+
+<div class="popup-form">
+  <header class="popup-form-header orient-contents-horizontally-dialog">
+    <div class="popup-form-title">Edit Item</div>
+    <span class="horizontal-spacer"></span>
+    <button color="warn" (click)="OnExit()" mat-button>
+      <mat-icon color="warn">close</mat-icon>
+    </button>
+  </header>
+  
+  <div class="popup-form-content">
+    <form class="orient-contents-vertically-dialog" [formGroup]="itemForm" (ngSubmit)="OnSubmitItem()">
+      <mat-label class="divider" *ngIf="currentUserService.CurrentUserValue.Organization">Note: include your organization's name in the description if you would like your organization to be recognizable in the item's listing.</mat-label>
+      <mat-form-field appearance="outline">
+        <mat-label>What is the item?</mat-label>
+        <input matInput placeholder="Name" formControlName="name" />
+      </mat-form-field>
+
+      <mat-label class="divider">Provide a short description of the item. Only include information you are comfortable being publically listed. Information like the size of the item and its condition would be appropriate to include here.</mat-label>
+      <mat-form-field appearance="outline" >
+        <mat-label>Short Description</mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" placeholder="Description" maxlength="200" type="text" formControlName="description"></textarea>
+        <mat-hint align="end">{{itemForm.controls['description'].value?.length || 0}}/200</mat-hint>
+        <button mat-button *ngIf="itemForm.controls['description'].dirty" matSuffix mat-icon-button aria-label="Clear" (click)="itemForm.controls['description'].reset()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-label class="divider"><b>Pickup Instructions and Further Details:</b> These instructions will only be shown to the person who will come and get the item. Information such as what time of day you would like the item to be taken and where the item will be located would be helpful to describe here.</mat-label>
+      <mat-form-field appearance="outline" >
+        <mat-label>Instructions</mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5" placeholder="Instructions" maxlength="10000" type="text" formControlName="instructions"></textarea>
+        <button mat-button *ngIf="itemForm.controls['instructions'].dirty" matSuffix mat-icon-button aria-label="Clear" (click)="itemForm.controls['instructions'].reset()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      
+      <div class="orient-contents-horizontally-dialog">
+        <span class="horizontal-spacer"></span>
+        <span class="horizontal-spacer"></span>
+        <button mat-raised-button class="white-color" color="primary" type="submit" [disabled]="!itemForm.valid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

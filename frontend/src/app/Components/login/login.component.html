@@ -1,0 +1,36 @@
+<div *ngIf="!dataLoaded" class="data-loader-dialog"><mat-spinner mode="indeterminate"></mat-spinner></div>
+
+<div class="popup-form">
+  <header class="popup-form-header orient-contents-horizontally-dialog">
+    <div class="popup-form-title">LOGIN</div>
+    <span class="horizontal-spacer"></span>
+    <button color="warn" (click)="OnExit()" mat-button>
+      <mat-icon color="warn">close</mat-icon>
+    </button>
+  </header>
+
+  <form class="orient-contents-vertically-dialog popup-form-content" [formGroup]="loginForm" (ngSubmit)="OnSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter Your Email</mat-label>
+      <input matInput placeholder="Email" type="email" formControlName="email"/>
+      <mat-error *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.required">Email is required.</mat-error>
+      <mat-error *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.email">Enter a valid email address.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" >
+      <mat-label>Enter Your Password</mat-label>
+      <input matInput placeholder="Password" type="password" formControlName="password" [type]="hide ? 'password' : 'text'"/>
+      <mat-error *ngIf="(password?.dirty || password?.touched) && password?.invalid && password?.errors?.required">Password is required.</mat-error>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="white-color" type="submit" [disabled]="!loginForm.valid">Login</button>
+
+    <div class="divider"></div>
+
+    <div class="orient-contents-horizontally-dialog popup-signup">
+      <div>Not signed up?</div>
+      <button mat-button type="button" color="primary" (click)="OnRegister()">SIGNUP</button>
+    </div>
+  </form>
+</div>

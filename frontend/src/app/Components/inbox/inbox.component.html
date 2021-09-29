@@ -1,0 +1,146 @@
+<div *ngIf="!dataLoaded" class="data-loader">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="(!loaded) && (dataLoaded)" class="messages-loader-dialog"><mat-spinner mode="indeterminate"></mat-spinner></div>
+
+<html *ngIf="dataLoaded" class="orient-contents-vertically search-form-main">
+  <mat-toolbar class="search-bar">
+    <button class="filter-button filter-first-row" type="button" color="primary" (click)="drawer.toggle()" matTooltip="Filter the results." matTooltipPosition="above" mat-button><mat-icon class="icon-with-text">fullscreen</mat-icon>Fullscreen</button>
+    
+    <span class="horizontal-spacer filter-first-row"></span>
+    
+    <form [formGroup]="searchForm" (ngSubmit)="OnSearchSubmit()">
+      <mat-form-field class="search-form">
+        <input formControlName="search" type="text" matInput>
+      </mat-form-field>
+
+      <button (onClick)="OnSearchSubmit()" mat-icon-button>
+        <mat-icon color="primary" matSuffix>search</mat-icon>
+      </button>
+    </form>
+  </mat-toolbar>
+  <mat-toolbar class="search-bar-filters">
+    <button class="filter-button filter-second-row" type="button" color="primary" (click)="drawer.toggle()" matTooltip="Filter the results." matTooltipPosition="above" mat-button><mat-icon class="icon-with-text">fullscreen</mat-icon>Fullscreen</button>
+    <button class="filter-button white-color filter-second-row-mobile" type="button" color="primary" (click)="drawer.toggle()" matTooltip="Filter the results." matTooltipPosition="above" mat-mini-fab><mat-icon>fullscreen</mat-icon></button>
+
+    <mat-chip-list [multiple]="true" [selectable]="true" class="orient-contents-horizontally filter-chips">
+      <mat-chip color="primary" [class]="chip.class" *ngFor="let chip of msgStatuses" [selected]="chip.state" (selectionChange)="SelectReadFilter($event, chip.name)" (click)="chip.state = !chip.state">
+        {{chip.name}}
+      </mat-chip>
+    </mat-chip-list>
+
+    <span class="horizontal-spacer"></span>
+    <button type="button" (click)="Refresh()" matTooltip="Refresh the results." matTooltipPosition="above" mat-icon-button><mat-icon color="primary">refresh</mat-icon></button>
+  </mat-toolbar>
+
+  <mat-drawer-container class="conversations-container">
+    <mat-drawer [opened]="true" class="conversations-sidenav" mode="side" #drawer>
+      <div *ngIf="loaded" class="conversations-sidenav-content">
+        <mat-list class="conversations-list" *ngFor="let conversation of pageConversations" [class.selected]="conversation === selectedConversation" (click)="OnSelectConversation(conversation)">
+          <mat-card *ngIf="conversation==selectedConversation" class="selected-conversation-card">
+            <img [src]="conversation.Photo ? conversation.Photo : 'https://kula-images.s3.amazonaws.com/default.jpeg'" class="messages-header-image primary-border">
+            <div class="conversations-content orient-contents-vertically">
+              <p class="conversations-title profile-about-line">{{conversation.Title}}</p>
+              <p *ngIf="conversation.Messages[conversation.Messages.length - 1].SenderId == user.Id" class="conversations-subtitle">You: {{conversation.Blurb}}</p>
+              <p *ngIf="conversation.Messages[conversation.Messages.length - 1].SenderId != user.Id" class="conversations-subtitle">{{conversation.Blurb}}</p>
+            </div>
+            <span class="conversation-spacer"></span>
+            <div class="orient-contents-vertically conversation-icons">
+              <mat-icon *ngIf="conversation.Read" color="primary" class="message-read-icon">panorama_fish_eye</mat-icon>
+              <mat-icon *ngIf="!conversation.Read" color="primary" class="message-unread-icon">lens</mat-icon>
+              <span class="horizontal-spacer"></span>
+              <mat-icon *ngIf="conversation.Complete" color="accent" class="message-selected-icon">verified</mat-icon>
+            </div>
+          </mat-card>
+          <mat-card *ngIf="conversation!=selectedConversation" class="conversation-card">
+            <img [src]="conversation.Photo ? conversation.Photo : 'https://kula-images.s3.amazonaws.com/default.jpeg'" class="messages-header-image primary-border">
+            <div class="conversations-content orient-contents-vertically">
+              <p class="conversations-title profile-about-line">{{conversation.Title}}</p>
+              <p *ngIf="conversation.Messages[conversation.Messages.length - 1].SenderId == user.Id" class="conversations-subtitle">You: {{conversation.Blurb}}</p>
+              <p *ngIf="conversation.Messages[conversation.Messages.length - 1].SenderId != user.Id" class="conversations-subtitle">{{conversation.Blurb}}</p>
+            </div>
+            <span class="conversation-spacer"></span>
+            <div class="orient-contents-vertically mobile-hide conversation-icons">
+              <mat-icon *ngIf="conversation.Read" color="primary" class="message-read-icon">panorama_fish_eye</mat-icon>
+              <mat-icon *ngIf="!conversation.Read" color="primary" class="message-unread-icon">lens</mat-icon>
+              <span class="horizontal-spacer"></span>
+              <mat-icon *ngIf="conversation.Complete" color="accent" class="message-selected-icon">verified</mat-icon>
+            </div>
+          </mat-card>
+        </mat-list>
+			</div>
+    </mat-drawer>
+
+    <mat-drawer-content class="messages-drawer-content">
+      <mat-toolbar class="conversation-bar">
+        <img [src]="selectedConversation.Photo ? selectedConversation.Photo : 'https://kula-images.s3.amazonaws.com/default.jpeg'" class="conversation-header-image primary-border">
+        <mat-card-title class="conversation-header-title profile-about-line top-padding">{{selectedConversation.Title}}</mat-card-title>
+        <span class="horizontal-spacer"></span>
+        <button *ngIf="currMsgAboutItem && currMsgDecisionMaker && !selectedConversation.Complete" (click)="ApproveUserClaim()" color="accent" class="white-color add-button-mobile-hide" matTooltip="Choose this user to get your donation." matTooltipPosition="left" mat-raised-button>
+          <mat-icon class="icon-with-text">volunteer_activism</mat-icon>Donate Item
+        </button>
+        <button *ngIf="!currMsgAboutItem && currMsgDecisionMaker && !selectedConversation.Complete" (click)="AcceptDonation()" color="accent" class="white-color add-button-mobile-hide" matTooltip="Accept this donation." matTooltipPosition="left" mat-raised-button>
+          <mat-icon class="icon-with-text">shopping_basket</mat-icon>Accept Donation
+        </button>
+
+        <button *ngIf="currMsgAboutItem && currMsgDecisionMaker && !selectedConversation.Complete" (click)="ApproveUserClaim()" color="accent" class="white-color add-button-mobile-display" matTooltip="Choose this user to get your donation." matTooltipPosition="left" mat-mini-fab>
+          <mat-icon>volunteer_activism</mat-icon>
+        </button>
+        <button *ngIf="!currMsgAboutItem && currMsgDecisionMaker && !selectedConversation.Complete" (click)="AcceptDonation()" color="accent" class="white-color add-button-mobile-display" matTooltip="Accept this donation." matTooltipPosition="left" mat-mini-fab>
+          <mat-icon>shopping_basket</mat-icon>
+        </button>
+
+        <mat-chip-list *ngIf="selectedConversation.Complete" class="orient-contents-horizontally filter-chips">
+          <mat-chip color="accent" selected>
+          <mat-icon class="icon-with-text">verified</mat-icon>
+            Selected User
+          </mat-chip>
+        </mat-chip-list>
+      </mat-toolbar>
+
+      <div *ngIf="loaded" class="messages-container" #scrollframe>
+        <div class="messages-content">
+          <div *ngIf="selectedConversation && !disableMessages" class="msg-intro-card center-contents orient-contents-vertically">
+						<img [src]="selectedConversation.Photo ? selectedConversation.Photo : 'https://kula-images.s3.amazonaws.com/default.jpeg'" class="item-header-image primary-border">
+            <p class="top-padding"></p>
+            <mat-card-title class="message-title top-padding">{{selectedConversation.Title}}</mat-card-title>
+            <p class="message-subtitle">{{DiscussionPurpose(selectedConversation)}}</p>
+          </div>
+					<mat-list *ngFor="let msg of pageMsgs" [class.selected]="msg === selectedMsg">
+            <p class="message-sent-date">{{GetMessageCreatedDate(msg)}}</p>
+            <div *ngIf="user.Id == msg.SenderId" class="orient-contents-horizontally">
+              <div class="horizontal-spacer"></div>
+              <mat-card class="msg-card-sent right-justify-contents">
+                <p>{{msg.Body}}</p>
+              </mat-card>
+            </div>
+            <div *ngIf="user.Id != msg.SenderId" class="orient-contents-horizontally top-padding">
+              <mat-card class="msg-card-received left-justify-contents">
+                <p>{{msg.Body}}</p>
+              </mat-card>
+              <div class="horizontal-spacer"></div>
+            </div>
+          </mat-list>
+        </div>
+      </div>
+      <span class="horizontal-spacer"></span>
+      <form class="message-form center-contents" [formGroup]="messageForm" (ngSubmit)="OnMessageSubmit()">
+        <div class="green-border-focus message-form-input center-contents">
+          <textarea id="textarea1" class="message-input" autosize [minRows]="1" [maxRows]="10" formControlName="newMessage" (keydown)="triggerFunction($event)"></textarea>
+        </div>
+
+        <div class="orient-contents-vertically center-contents">
+          <button [disabled]="disableMessages" color="primary" class="button-with-icon-text add-button-mobile-hide" (onClick)="OnMessageSubmit()" mat-flat-button>
+            <mat-icon class="icon-with-text">send</mat-icon>Send Message
+          </button>
+          <button [disabled]="disableMessages" color="primary" class="white-color add-button-mobile-display" (onClick)="OnMessageSubmit()" mat-mini-fab>
+            <mat-icon>send</mat-icon>
+          </button>
+        </div>
+      </form>
+      
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+</html>

@@ -1,0 +1,21 @@
+<div *ngIf="!dataLoaded" class="data-loader-dialog"><mat-spinner mode="indeterminate"></mat-spinner></div>
+
+<div class="popup-form">
+  <header class="popup-form-header orient-contents-horizontally-dialog">
+    <div class="popup-form-title">{{data.title}}</div>
+    <span class="horizontal-spacer"></span>
+    <button color="warn" (click)="OnExit()" mat-button>
+      <mat-icon color="warn">close</mat-icon>
+    </button>
+  </header>
+
+  <div class="orient-contents-vertically-dialog popup-form-content">
+    <mat-label class="divider">{{data.dialog}}</mat-label>
+    
+    <div class="orient-contents-horizontally-dialog">
+      <button (click)="OnCancel()" color="primary" class="white-color" mat-raised-button>{{data.cancel}}</button>
+      <span class="horizontal-spacer"></span>
+      <button (click)="OnDelete()" color="warn" class="white-color" mat-raised-button>{{data.confirm}}</button>
+    </div>
+  </div>
+</div>

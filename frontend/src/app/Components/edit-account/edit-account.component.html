@@ -1,0 +1,107 @@
+<div *ngIf="!dataLoaded" class="data-loader-dialog"><mat-spinner mode="indeterminate"></mat-spinner></div>
+
+<div class="popup-form">
+  <header class="popup-form-header orient-contents-horizontally-dialog">
+    <div class="popup-form-title">Edit Account</div>
+    <span class="horizontal-spacer"></span>
+    <button color="warn" (click)="OnExit()" mat-button>
+      <mat-icon color="warn">close</mat-icon>
+    </button>
+  </header>
+  
+  <div class="popup-form-content">
+    <mat-checkbox [(ngModel)]="changePass" matTooltip="Check if you want to change your password">Change Password?</mat-checkbox>
+
+    <div class="divider"></div>
+  
+    <form *ngIf="changePass" class="orient-contents-vertically-dialog" [formGroup]="passForm" >
+      <mat-form-field appearance="outline">
+        <mat-label>Old Password</mat-label>
+        <input placeholder="Old Password" type="password" formControlName="oldPassword" [type]="hide3 ? 'password' : 'text'" matInput/>
+        <mat-error *ngIf="(oldPassword?.dirty || oldPassword?.touched) && oldPassword?.invalid && oldPassword?.errors?.required">Old Password is required.</mat-error>
+        <mat-icon (click)="hide3 = !hide3" matSuffix>{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+  
+      <div class="orient-contents-vertically-dialog" formGroupName="password">
+        <mat-form-field appearance="outline" >
+          <mat-label>New Pasword</mat-label>
+          <input matTooltip="Passwords must have a minimum eight characters, one upper case letter, one lower case letter, one number and one special character." placeholder="Password" type="password" formControlName="password1" [type]="hide1 ? 'password' : 'text'"  matInput/>
+          <mat-error *ngIf="(password1?.dirty || password1?.touched) && password1?.invalid && password1?.errors?.pattern">Password isn't strong enough.</mat-error>
+          <mat-error *ngIf="(password1?.dirty || password1?.touched) && password1?.invalid && password1?.errors?.required">New Password is required.</mat-error>
+          <mat-icon (click)="hide1 = !hide1" matSuffix>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" >
+          <mat-label>Confirm New Password</mat-label>
+          <input placeholder="Confirm Password" type="password" formControlName="password2" [type]="hide2 ? 'password' : 'text'" matInput/>
+          <mat-error *ngIf="(password2?.dirty || password2?.touched) && password2?.invalid && password2?.errors?.required">Confirm Password is required.</mat-error>
+          <mat-icon (click)="hide2 = !hide2" matSuffix>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+        <mat-error *ngIf="password?.errors?.doesMatchPassword">The passwords must match.</mat-error>
+      </div>
+    </form>
+  
+    <form class="orient-contents-vertically-dialog" [formGroup]="accountForm" (ngSubmit)="OnSubmitAccount()">
+      <mat-label class="form-label">Contact Information</mat-label>
+      <mat-form-field appearance="outline" >
+        <mat-label>Email Address</mat-label>
+        <input placeholder="Email" type="email" formControlName="email" required matInput/>
+        <mat-error *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.email">Edit a valid email address.</mat-error>
+        <mat-error *ngIf="(email?.dirty || email?.touched) && email?.invalid && email?.errors?.required">Email is required.</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" >
+        <mat-label *ngIf="!currentUserService.CurrentUserValue.Organization">Edit Full Name</mat-label>
+        <mat-label *ngIf="currentUserService.CurrentUserValue.Organization">Enter Organization Name</mat-label>
+        <input placeholder="Full Name" type="text" formControlName="name" matInput/>
+        <mat-error *ngIf="(name?.dirty || name?.touched) && name?.invalid && name?.errors?.required">Full name is required.</mat-error>
+      </mat-form-field>
+  
+      <mat-label *ngIf="!currentUserService.CurrentUserValue.Organization" class="stepper-form-label">Note: Enter an address where items you list will be picked up from. In most cases, this will be your home address.</mat-label>
+      <mat-label *ngIf="currentUserService.CurrentUserValue.Organization" class="stepper-form-label">Note: Enter your organization address.</mat-label>
+      <div class="orient-contents-vertically-dialog" formGroupName="location">
+        <mat-form-field appearance="outline" >
+          <mat-label>Address</mat-label>
+          <textarea matInput formControlName="addressOne" type="text" placeholder="Address"></textarea>
+          <mat-error *ngIf="(addressOne?.dirty || addressOne?.touched) && addressOne?.errors?.required">Address is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" >
+          <mat-label>Address 2</mat-label>
+          <textarea matInput formControlName="addressTwo" type="text" placeholder="Address 2"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" >
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" type="text" placeholder="City">
+          <mat-error *ngIf="(city?.dirty || city?.touched) && city?.errors?.required">City is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>State</mat-label>
+          <mat-select type="text" formControlName="state">
+            <mat-optgroup *ngFor="let group of states" [label]="group.parent">
+              <mat-option *ngFor="let name of group.name" [value]="name">
+                {{ name }}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+          <mat-error *ngIf="(state?.dirty || state?.touched) && state?.errors?.required">State is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" >
+          <mat-label>Postal Code</mat-label>
+          <input matInput #postalCode2 maxlength="5" type="number" formControlName="zipcode" placeholder="Postal Code">
+          <mat-error *ngIf="(zipcode?.dirty || zipcode?.touched) && zipcode?.errors?.required">Postal code is required.</mat-error>
+          <mat-hint align="end">{{ postalCode2.value.length }} / 5</mat-hint>
+        </mat-form-field>
+      </div>
+      
+      <div class="orient-contents-horizontally-dialog">
+        <span class="horizontal-spacer"></span>
+        <span class="horizontal-spacer"></span>
+        <button color="primary" type="submit" class="white-color" [disabled]="((!accountForm.valid) && (changePass)) || ((changePass && !passForm.valid) || (!accountForm.valid))" mat-raised-button>Save</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div *ngIf="!dataLoaded" class="data-loader-dialog"><mat-spinner mode="indeterminate"></mat-spinner></div>
+
+<div class="popup-edit-about-form">
+  <header class="popup-form-header orient-contents-horizontally-dialog">
+    <div class="popup-form-title">Report an issue</div>
+    <span class="horizontal-spacer"></span>
+    <button color="warn" (click)="OnExit()" mat-button>
+      <mat-icon color="warn">close</mat-icon>
+    </button>
+  </header>
+
+  <form class="orient-contents-vertically-dialog popup-form-content" [formGroup]="headerForm" (ngSubmit)="OnSubmit()">
+    <div class="divider">Tell us about the issue you are having:</div>
+    <mat-form-field appearance="outline">
+      <mat-label>Describe the problem</mat-label>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="2" placeholder="Describe the issue" type="text" formControlName="issue"></textarea>
+    </mat-form-field>
+    
+    <div class="orient-contents-horizontally-dialog">
+      <span class="horizontal-spacer"></span>
+      <span class="horizontal-spacer"></span>
+      <button mat-raised-button color="primary" class="white-color" [disabled]="!headerForm.valid" type="submit">Report</button>
+    </div>
+  </form>
+</div>
